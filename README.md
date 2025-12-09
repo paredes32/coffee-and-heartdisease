@@ -27,9 +27,16 @@ This Jupyter notebook simulates 1000 data points to investigate potential confou
 3. Open the notebook: `jupyter notebook coffee-and-heartdisease.ipynb`
 4. Run all cells to reproduce results.
 
-## Visualizations
+## Scatter Plot
 ![Coffee vs Heart Disease Scatter Plot](scatter-plot.png)  
 Correlation coefficient between coffee consumption and risk of heart disease: 0.65
+### Causality Graph
+<p align="center">
+  <img src="causality-graph.png" width="800">
+  <br>
+  <em>연령이 교란변수(confounder)로 작용하며, 운동은 보호요인으로 작용함을 보여주는 인과 다이어그램</em>
+</p>
+
 
 ## Limitations
 - Data is simulated (random normal distribution); real-world data may differ.
