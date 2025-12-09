@@ -56,7 +56,7 @@
 
 ### 바로 실행해보기
 ```bash
-git clone https://github.com/너의아이디/coffee-heartdisease-stats.git
+git clone https://github.com/paredes32/coffee-heartdisease-stats.git
 cd coffee-heartdisease-stats
 pip install numpy matplotlib scipy pandas statsmodels
 jupyter notebook coffee-and-heartdisease.ipynb
