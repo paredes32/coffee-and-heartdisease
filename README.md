@@ -1,6 +1,6 @@
 # coffee-heartdisease-stats
 [![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/code/paredes32/coffee-and-heartdisease)
-[![GitHub](https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/paredes32/coffee-heartdisease)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/paredes32/coffee-and-heartdisease)
 
 ## 주요 분석 결과
 | 항목                        | 결과                     | 통계적 유의성                |
