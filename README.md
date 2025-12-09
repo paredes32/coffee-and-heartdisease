@@ -1,45 +1,62 @@
-# Coffee-HeartDisease-Stats
+# Coffee ≠ Heart Disease  
+### 겉보기 상관관계 vs 진짜 인과관계 (시뮬레이션 기반 교란변수 분석)
 
-Analysis of simulated data exploring the relationship between coffee consumption, age, exercise, and heart disease risk. This project uses Python to generate data, compute correlations, visualize relationships, and perform statistical tests like ANOVA with post-hoc analysis.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=flat&logo=python&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat&logo=scipy&logoColor=white)
+![Statsmodels](https://img.shields.io/badge/Statsmodels-000000?style=flat&logo=python&logoColor=white)
 
-## Project Overview
-This Jupyter notebook simulates 1000 data points to investigate potential confounders (e.g., age) in the coffee-heart disease link. It includes scatter plots, Pearson correlations, and multi-group comparisons via Tukey HSD to assess exercise's impact.
+> 흔히 “커피 마시면 심장병에 걸린다”는 뉴스를 보지만…  
+> 진짜 원인은 **연령**이 교란변수(confounder)였고, 운동이 보호요인이었다는 사실을 시뮬레이션으로 증명합니다.
 
-## 주요 분석 결과
+---
 
-| 항목                  | 결과                          | 통계적 유의성                  |
-|-----------------------|-------------------------------|--------------------------------|
-| 커피 소비 vs 심장병 위험 | 상관계수: 0.30               | Pearson r, p < 0.001           |
-| 연령 vs 심장병 위험     | 상관계수: 0.60 (추정)        | Pearson r, p < 0.001           |
-| 운동なし vs 자주 운동  | 평균 차이: -0.85             | Tukey HSD, p < 0.001           |
-| 운동なし vs 가끔 운동  | 평균 차이: -0.33             | Tukey HSD, p = 0.146 (유의X)   |
-| 가끔 운동 vs 자주 운동 | 평균 차이: -0.52             | Tukey HSD, p = 0.014           |
+### 주요 분석 결과
 
-- **해석**: 커피 소비와 심장병 위험 간 약한 양의 상관이 있지만, 연령이 confounding factor일 수 있음. 운동 증가 시 심장병 위험이 유의하게 감소.
+| 분석 내용                        | 결과                                      | 통계적 유의성                  |
+|--------------------------------|-------------------------------------------|--------------------------------|
+| 커피 섭취 ↔ 심장병 위험          | 상관계수 **r = 0.30**                     | Pearson, **p < 0.001**         |
+| 연령 → 심장병 위험               | 가장 강한 예측 변수 (β ≈ 0.2)              | **r ≈ 0.60** | **p < 0.001**                  |
+| 운동 없음 vs 자주 운동           | 평균 위험도 **-0.85** 낮아짐                | Tukey HSD, **p < 0.001**       |
+| 운동 없음 vs 가끔 운동           | 평균 위험도 **-0.33** 낮아짐                | Tukey HSD, p = 0.146 (비유의)   |
 
-## 사용 기술
-* Python, NumPy, Matplotlib, SciPy, Pandas, Statsmodels
-* Pearson 상관분석, ANOVA, Tukey HSD 사후 분석
+**결론**: 커피와 심장병 사이의 양의 상관은 대부분 **연령에 의한 가짜 상관**(spurious correlation)입니다.  
+운동을 자주 하는 사람일수록 심장병 위험이 유의미하게 낮아집니다.
 
-## How to Run
-1. Clone the repo: `git clone https://github.com/paredes32/coffee-heartdisease-stats.git`
-2. Install dependencies: `pip install numpy matplotlib scipy pandas statsmodels`
-3. Open the notebook: `jupyter notebook coffee-and-heartdisease.ipynb`
-4. Run all cells to reproduce results.
+---
 
-## Scatter Plot
-![Coffee vs Heart Disease Scatter Plot](scatter-plot.png)  
-Correlation coefficient between coffee consumption and risk of heart disease: 0.65
-### Causality Graph
+### 1. 커피 섭취량 vs 심장병 위험도 (산점도)
+
 <p align="center">
-  <img src="causality-graph.png" width="800">
+  <img src="scatter-plot.png" width="850">
   <br>
-  <em>연령이 교란변수(confounder)로 작용하며, 운동은 보호요인으로 작용함을 보여주는 인과 다이어그램</em>
+  <em>나이가 많을수록 커피도 더 마시고, 심장병 위험도 높아져 → 겉보기에는 커피가 위험해 보임</em>
 </p>
 
+---
 
-## Limitations
-- Data is simulated (random normal distribution); real-world data may differ.
-- Assumes linear relationships; further modeling (e.g., regression) recommended.
+### 2. 인과관계 다이어그램 (Causal Diagram)
 
-For questions, open an issue or contact me!
+<p align="center">
+  <img src="causality-graph.png" width="900">
+  <br>
+  <em>연령 → 커피, 연령 → 심장병 위험이라는 교란 경로가 존재 → 커피는 직접적 원인이 아님</em>
+</p>
+
+---
+
+### 사용 기술 & 방법론
+- **데이터 생성**: NumPy로 1,000명 시뮬레이션 데이터 생성  
+- **상관분석**: Pearson correlation  
+- **집단 비교**: One-way ANOVA + Tukey HSD 사후검정  
+- **시각화**: Matplotlib + 수작업 Causal DAG  
+
+---
+
+### 바로 실행해보기
+```bash
+git clone https://github.com/너의아이디/coffee-heartdisease-stats.git
+cd coffee-heartdisease-stats
+pip install numpy matplotlib scipy pandas statsmodels
+jupyter notebook coffee-and-heartdisease.ipynb
