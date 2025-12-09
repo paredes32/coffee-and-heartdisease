@@ -29,6 +29,7 @@ This Jupyter notebook simulates 1000 data points to investigate potential confou
 
 ## Visualizations
 ![Coffee vs Heart Disease Scatter Plot](scatter-plot.png)  
+Correlation coefficient between coffee consumption and risk of heart disease: 0.65
 
 ## Limitations
 - Data is simulated (random normal distribution); real-world data may differ.
